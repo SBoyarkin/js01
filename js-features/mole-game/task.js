@@ -15,7 +15,6 @@ const click = function (id) {
 
         }
   }
-
 }
 
 const clear_result = function () {

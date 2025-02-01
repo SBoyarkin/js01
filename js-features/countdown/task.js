@@ -1,4 +1,3 @@
-
 const status_id = document.getElementById('status')
     function counter() {
         if (Number(status_id.textContent.split(':')[1]) > 57) {
@@ -6,9 +5,8 @@ const status_id = document.getElementById('status')
         } else {
             clearInterval(inter)
             alert('Вы победили в конкурсе')
-
         }
-
     }
+
 let inter = setInterval((counter), 1000)
 
