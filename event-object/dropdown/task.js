@@ -1,20 +1,31 @@
-let dropdown_btn = document.querySelector('.dropdown__value')
-let dropdown_list = document.querySelector('.dropdown__list')
-let dropdown_item = document.querySelectorAll('.dropdown__item')
-let dropdown_value = document.querySelector('.dropdown__value')
-console.log(dropdown_value)
-const click_item = function (event) {
-    event.preventDefault()
-    dropdown_value.textContent = this.textContent
-    odd()
-}
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdowns = document.querySelectorAll('.dropdown');
 
-dropdown_item.forEach((element) => {element.addEventListener('click',click_item) })
+    dropdowns.forEach(dropdown => {
+        const valueElement = dropdown.querySelector('.dropdown__value');
+        const listElement = dropdown.querySelector('.dropdown__list');
 
-const odd = function(event) {
-    dropdown_list.classList.toggle('dropdown__list_active');
-}
+        valueElement.addEventListener('click', function() {
+            listElement.classList.toggle('dropdown__list_active');
+        });
 
-dropdown_btn.addEventListener('click', odd)
+        const items = dropdown.querySelectorAll('.dropdown__item');
+        items.forEach(item => {
+            item.addEventListener('click', function() {
+                const newValue = item.textContent;
+                valueElement.textContent = newValue;
+                listElement.classList.remove('dropdown__list_active');
+            });
+        });
+    });
 
-
+    document.addEventListener('click', function(event) {
+        event.preventDefault()
+        dropdowns.forEach(dropdown => {
+            const listElement = dropdown.querySelector('.dropdown__list');
+            if (!dropdown.contains(event.target)) {
+                listElement.classList.remove('dropdown__list_active');
+            }
+        });
+    });
+});
