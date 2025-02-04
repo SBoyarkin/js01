@@ -17,14 +17,9 @@ class Game {
   }
 
   registerEvents() {
-
-
-    document.addEventListener("keydown", (event) => {
-      let curent = document.querySelector('.symbol_current').textContent
-      if (event.key == curent) {
-         this.success()
-      } else this.fail()
-    })
+    document.addEventListener("keydown", (event) =>
+    event.key == document.querySelector('.symbol_current').textContent ? this.success() : this.fail()
+    )
 
     /*
       TODO:
