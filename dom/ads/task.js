@@ -21,5 +21,4 @@ const rotation = function (e) {
 
 
 
-rotator_list.forEach(value => (setInterval(() =>rotation(value), 1000)))
-// rotator_list.forEach(value => value.addEventListener('click', () => rotation(value)))
+rotator_list.forEach(value => (setInterval(() => rotation(value), 1000)))
