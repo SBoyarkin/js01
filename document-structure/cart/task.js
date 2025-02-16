@@ -4,6 +4,26 @@ const product_add = [...document.querySelectorAll('.product__add')]
 const cart_products = document.querySelector('.cart__products')
 
 
+const add_cart_product = function (element) {
+    const count_cart = cart_products.querySelectorAll('.cart__product')
+    if (!count_cart.length) {
+        cart_products.appendChild(element)
+    } else
+    {
+
+        const in_cart = [...count_cart].findIndex((value)=> { return value.dataset.id == element.dataset.id} )
+        if (in_cart == -1) {
+            cart_products.appendChild(element)
+        }
+        else {
+            console.log(count_cart.item(in_cart))
+            // console.log(count_cart.item(in_cart).textContent = count_cart.item(in_cart).querySelector('cart__product-count'))
+        }
+
+    }
+
+}
+
 const dec = function (event) {
     console.log(event)
     cur_val = Number(event.target.nextElementSibling.textContent)
@@ -29,18 +49,18 @@ const append_products = function (event) {
 
 
         let cp = document.createElement("div")
-        let a = document.createElement('a')
+        let a = document.createElement('img')
         let product_count = document.createElement('div')
         cp.classList.add('cart__product')
         cp.dataset.id = product.dataset.id
         a.classList.add('cart__product-image')
-        a.setAttribute('href', url.src)
+        a.setAttribute('src', url.src)
 
     product_count.classList.add('cart__product-count')
-    product_count.textContent = 10 // добавить сюда колличество
+    product_count.textContent = event.currentTarget.previousElementSibling.querySelector('.product__quantity-value').textContent // добавить сюда колличество
     cp.appendChild(a)
     cp.appendChild(product_count)
-    console.log(cp)
+    add_cart_product(cp)
 }
 
 control_dec.forEach((value) => {value.addEventListener('click', dec)})
