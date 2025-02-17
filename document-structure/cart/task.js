@@ -21,7 +21,6 @@ const add_cart_product = function (element) {
 }
 
 const dec = function (event) {
-    console.log(event)
     cur_val = Number(event.target.nextElementSibling.textContent)
     if (cur_val  > 0) {
         cur_val -= 1
@@ -30,7 +29,6 @@ const dec = function (event) {
 }
 
 const inc = function (event) {
-    console.log(event)
     cur_val = Number(event.target.previousElementSibling.textContent)
     cur_val += 1
     event.target.previousElementSibling.textContent = cur_val
