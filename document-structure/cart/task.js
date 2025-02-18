@@ -38,18 +38,16 @@ const appendProducts = function (event) {
         let product = event.currentTarget.closest('.product')
         let url = product.querySelector('.product__image')
         url.getAttribute('href')
-        let cp = document.createElement("div")
-        let a = document.createElement('img')
-        let productCount = document.createElement('div')
-        cp.classList.add('cart__product')
-        cp.dataset.id = product.dataset.id
-        a.classList.add('cart__product-image')
-        a.setAttribute('src', url.src)
-    productCount.classList.add('cart__product-count')
-    productCount.textContent = event.currentTarget.previousElementSibling.querySelector('.product__quantity-value').textContent
-    cp.appendChild(a)
-    cp.appendChild(productCount)
-    addCartProduct(cp)
+         const div = document.createElement('div');
+        div.classList.add('cart__product')
+        div.dataset.id = product.dataset.id
+        div.innerHTML =
+            `
+                <img class="cart__product-image" src=${url.src}>
+                <div class="cart__product-count">${event.currentTarget.previousElementSibling.querySelector('.product__quantity-value').textContent}</div>
+            `
+        console.log(div)
+    addCartProduct(div)
 }
 
 controlDec.forEach((value) => {value.addEventListener('click', dec)})
