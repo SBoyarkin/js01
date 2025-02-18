@@ -19,6 +19,7 @@ const add_event = function (e) {
         const remover = new_el.querySelector('.task__remove')
         remover.addEventListener('click', (e) => {e.target.parentElement.remove()})
         task_list.appendChild(new_el)
+        input_data.value = ''
     }
 }
 todo_form.addEventListener('submit', add_event)
